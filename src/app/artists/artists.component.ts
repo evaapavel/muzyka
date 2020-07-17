@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Directory } from '../directory';
+import { DirectoryService } from '../directory.service';
+
+
 
 @Component({
   selector: 'app-artists',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistsComponent implements OnInit {
 
-  constructor() { }
+
+
+  artists: Directory[];
+
+
+
+  constructor(private directoryService: DirectoryService) { }
+
+
 
   ngOnInit(): void {
+    this.getArtists();
   }
+
+
+
+  getArtists(): void {
+    this.artists = this.directoryService.getArtistDirectories();
+  }
+
+
 
 }
